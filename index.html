@@ -11,6 +11,10 @@
   <link rel="canonical" href="https://purefn.io/">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0,0,24,24'%3E%3Crect width='24' height='24' rx='5' fill='%2309090b'/%3E%3Cg fill='none' stroke-width='2'%3E%3Ccircle cx='5' cy='12' r='2.5' stroke='%2382828c'/%3E%3Cpath d='M7.5,12h5' stroke='%23a1a1aa'/%3E%3Cpath d='M12.5,8.8L16,12l-3.5,3.2' stroke='%23a1a1aa'/%3E%3Crect x='16' y='8.8' width='5.5' height='6.4' stroke='%23fafafa'/%3E%3C/g%3E%3C/svg%3E">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Pure Function">
   <meta property="og:url" content="https://purefn.io/">
@@ -135,6 +139,7 @@
       letter-spacing: -0.032em;
       line-height: 1.06;
       max-width: 21ch;
+      text-wrap: balance;
     }
 
     .hero .lede {
@@ -161,13 +166,14 @@
       font-size: 1.375rem;
       font-weight: 600;
       letter-spacing: -0.015em;
+      text-wrap: balance;
     }
 
     /* Cards */
 
     .domains {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 1rem;
     }
 
@@ -176,11 +182,13 @@
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1.75rem 1.5rem 1.875rem;
-      transition: border-color 160ms ease;
+      transition: background-color 160ms ease;
     }
 
+    /* Cards are static, not links: a faint tint on hover instead of a border
+       highlight that would read as a clickable affordance. */
     @media (hover: hover) {
-      .card:hover { border-color: var(--border-strong); }
+      .card:hover { background: #0f0f13; }
     }
 
     .card .mono { display: block; margin-bottom: 1.375rem; }
@@ -192,6 +200,7 @@
       letter-spacing: -0.01em;
       line-height: 1.35;
       margin-bottom: 0.75rem;
+      text-wrap: balance;
     }
 
     .card p { font-size: 0.9375rem; }
@@ -244,9 +253,17 @@
       padding-bottom: 2rem;
     }
 
-    .site-footer p { font-size: 0.875rem; color: var(--muted); }
+    .site-footer p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      text-wrap: balance;
+    }
 
     /* Responsive */
+
+    @media (max-width: 58rem) {
+      .domains { grid-template-columns: 1fr; }
+    }
 
     @media (max-width: 56rem) {
       .identity { grid-template-columns: 1fr; gap: 2rem; }
@@ -258,6 +275,12 @@
       .identity dl { grid-template-columns: 1fr; row-gap: 0.5rem; }
       .identity dt { padding-top: 1rem; }
       .identity dt:first-child { padding-top: 0; }
+
+      .site-footer .container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
     }
   </style>
 </head>
@@ -274,7 +297,7 @@
         </svg>
         purefn
       </a>
-      <span class="mono">San Francisco, CA</span>
+      <span class="mono">2026</span>
     </div>
   </header>
 
@@ -295,7 +318,7 @@
       <div class="container">
         <div class="section-head">
           <h2 id="research-heading">Research Domains</h2>
-          <span class="mono">01 / 03</span>
+          <span class="mono">01 / 02</span>
         </div>
         <div class="domains">
           <article class="card">
@@ -303,8 +326,8 @@
             <h3>Recurrent &amp; Constant-Memory Architectures</h3>
             <p>
               Sub-quadratic sequence modeling, state-space formulations, and
-              constant-memory recurrence designed for ultra-low latency inference
-              and lifelong learning.
+              constant-memory recurrence designed for low-latency inference and
+              lifelong learning.
             </p>
           </article>
           <article class="card">
@@ -312,7 +335,8 @@
             <h3>Embodied &amp; Physical AI</h3>
             <p>
               Real-time zero-copy state transport, high-frequency motor control
-              loops, and neuromorphic biological circuit emulation.
+              loops, and neuromorphic biological circuit emulation for physical
+              substrates.
             </p>
           </article>
           <article class="card">
@@ -320,7 +344,8 @@
             <h3>Autonomous Agent Systems</h3>
             <p>
               Deterministic execution substrates, capability-bounded sandbox
-              lattices, and continuous verification loops.
+              lattices, and continuous verification loops for verifiable
+              autonomous task execution.
             </p>
           </article>
         </div>
@@ -331,7 +356,7 @@
       <div class="container">
         <div class="section-head">
           <h2 id="company-heading">Company</h2>
-          <span class="mono">Contact</span>
+          <span class="mono">02 / 02</span>
         </div>
         <div class="identity">
           <dl>
